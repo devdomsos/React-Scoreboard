@@ -19,7 +19,7 @@ class AddPlayerForm extends Component {
     }
 
     render () {
-        console.log(this.state.value, 'value')
+      
         return (
             <form onSubmit={this.handleSubmit}> 
                 <input

@@ -6,7 +6,7 @@ class Counter extends React.Component {
    
   render () {
     let index = this.props.index;
-    console.log(this.props, 'props')
+  
         return (
              
          <div className="counter">
