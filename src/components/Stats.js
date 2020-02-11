@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 const Stats = ({players2}) => {
 
@@ -27,5 +27,11 @@ const Stats = ({players2}) => {
   );
 
 }
+
+Stats.propTypes = {
+    
+   
+    players2: PropTypes.arrayOf(PropTypes.object)
+  }
 
 export default Stats;

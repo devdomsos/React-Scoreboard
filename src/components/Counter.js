@@ -1,9 +1,9 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 
 class Counter extends React.Component {
-   
+
   render () {
 
     const { score3, changeScore2, index } = this.props;
@@ -21,5 +21,11 @@ class Counter extends React.Component {
    
             }  
  }
+
+ Counter.propTypes = {
+  score3: PropTypes.number, 
+  changeScore2: PropTypes.func, 
+  index: PropTypes.number
+};
 
  export default Counter;
