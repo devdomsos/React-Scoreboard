@@ -36,12 +36,12 @@ class Player extends PureComponent {
 
   Player.propTypes = {
     
-    name1: PropTypes.string,
-    score2: PropTypes.number,
-    changeScore1: PropTypes.func,
+    name1: PropTypes.string.isRequired,
+    score2: PropTypes.number.isRequired,
+    changeScore1: PropTypes.func.isRequired,
     index: PropTypes.number,
     id: PropTypes.number,
-    removePlayer: PropTypes.func
+    removePlayer: PropTypes.func.isRequired
   }
 
 export default Player;
