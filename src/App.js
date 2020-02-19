@@ -43,6 +43,16 @@ class App extends React.Component{
      
   //  }
 
+
+  findHighScore = () => {
+    const allScores = this.state.players.map( p => p.score5 );
+    const highScore = Math.max(...allScores);
+    if (highScore) {
+      return highScore;
+    } 
+    return null;
+  }
+
   prevPlayerId = 4;
 
    handleScoreChange = (index, delta) => {
@@ -109,6 +119,7 @@ class App extends React.Component{
     index={index}
     removePlayer={this.handleRemovePlayer}
     id={user.id}
+    isHighScore={this.findHighScore() === user.score5}
     />
    
     )}
