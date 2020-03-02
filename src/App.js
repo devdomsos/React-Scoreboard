@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Player from './components/Player';
 import AddPlayerForm from './components/AddPlayerForm';
+import { Provider } from './components/Context';
 
 class App extends React.Component{
   
@@ -101,31 +102,34 @@ class App extends React.Component{
   
   render () {
     return (
-   <div className="scoreboard">
-      <Header 
-      title="LadderBoard" 
-      players1={this.state.players}
-      />
+      <Provider>
+           <div className="scoreboard">
+                <Header 
+                title="LadderBoard" 
+                players1={this.state.players}
+                />
 
-    
-    {this.state.players.map( (user, index) => 
-   
-    
-    <Player 
-    name1={user.name3}
-    score2={user.score5}
-    key={user.id.toString()}
-    changeScore1={this.handleScoreChange}
-    index={index}
-    removePlayer={this.handleRemovePlayer}
-    id={user.id}
-    isHighScore={this.findHighScore() === user.score5}
-    />
-   
-    )}
+              
+                {this.state.players.map( (user, index) => 
+              
+                
+                <Player 
+                name1={user.name3}
+                score2={user.score5}
+                key={user.id.toString()}
+                changeScore1={this.handleScoreChange}
+                index={index}
+                removePlayer={this.handleRemovePlayer}
+                id={user.id}
+                isHighScore={this.findHighScore() === user.score5}
+                />
+              
+                )}
+              
+                <AddPlayerForm addPlayer={this.handleAddPlayer}/>
+          </div>
+      </Provider>
   
-    <AddPlayerForm addPlayer={this.handleAddPlayer}/>
-    </div>
   );
   }
 }
