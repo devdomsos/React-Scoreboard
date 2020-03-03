@@ -7,26 +7,21 @@ import { Consumer } from './Context';
 class Player extends PureComponent {
   render() {
     const {
-      name1,
-      score2,
-      index,
-      id,
-
+      index
     } = this.props;
 
    
 
     return (
       <Consumer>
-        { context => (
+        { ({actions, players}) => (
             <div className="player">
             <span className="player-name">
-            <button className="remove-player" onClick={ () => context.actions.removePlayer1(id) }>✖</button>
+            <button className="remove-player" onClick={ () => actions.removePlayer1(players[index].id) }>✖</button>
             <Icon isHighScore={this.props.isHighScore} /> 
-              {name1}
+              {players[index].name3}
             </span>
               <Counter 
-                score3={score2}
                 index={index}
                 />
             </div>
@@ -38,11 +33,7 @@ class Player extends PureComponent {
   }
 
   Player.propTypes = {
-    
-    name1: PropTypes.string.isRequired,
-    score2: PropTypes.number.isRequired,
     index: PropTypes.number,
-    id: PropTypes.number,
   }
 
 export default Player;

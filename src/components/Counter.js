@@ -6,17 +6,17 @@ class Counter extends React.Component {
 
   render () {
 
-    const { score3, index } = this.props;
+    const { index } = this.props;
     
         return (
           <Consumer>
              {/* implicit return */}
-            { context => (
+            { ({actions, players}) => (
                <div className="counter">
-               <button className="counter-action decrement" onClick={ () => context.actions.changeScore1(index, -1) }>-</button>
+               <button className="counter-action decrement" onClick={ () => actions.changeScore1(index, -1) }>-</button>
              
-             <span className="counter-score">{score3} </span>
-                <button className="counter-action increment" onClick={ () => context.actions.changeScore1(index,  1) }>+</button>
+             <span className="counter-score">{players[index].score5} </span>
+                <button className="counter-action increment" onClick={ () => actions.changeScore1(index,  1) }>+</button>
        
              </div>
             ) }
@@ -27,7 +27,6 @@ class Counter extends React.Component {
  }
 
  Counter.propTypes = {
-  score3: PropTypes.number, 
   index: PropTypes.number
 };
 

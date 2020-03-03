@@ -5,10 +5,10 @@ import { Consumer } from './Context';
 const Stats = () => {
     return (
     <Consumer> 
-        { context => {
+        { ({players}) => {
 
-                const playerCount= context.players.length; 
-                const totalScore = context.players.reduce((total, player) => {
+                const playerCount= players.length; 
+                const totalScore = players.reduce((total, player) => {
                     return total + player.score5;
 
                 }, 0)
