@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Consumer } from './Context';
 
 class Counter extends React.Component {
 
   render () {
 
-    const { score3, changeScore2, index } = this.props;
+    const { score3, index } = this.props;
     
         return (
-             
-         <div className="counter">
-               <button className="counter-action decrement" onClick={ () => changeScore2(index, -1) }>-</button>
+          <Consumer>
+             {/* implicit return */}
+            { context => (
+               <div className="counter">
+               <button className="counter-action decrement" onClick={ () => context.actions.changeScore1(index, -1) }>-</button>
              
              <span className="counter-score">{score3} </span>
-                <button className="counter-action increment" onClick={ () => changeScore2(index,  1) }>+</button>
+                <button className="counter-action increment" onClick={ () => context.actions.changeScore1(index,  1) }>+</button>
        
              </div>
+            ) }
+          </Consumer>
            );
    
             }  
@@ -24,7 +28,6 @@ class Counter extends React.Component {
 
  Counter.propTypes = {
   score3: PropTypes.number, 
-  changeScore2: PropTypes.func, 
   index: PropTypes.number
 };
 

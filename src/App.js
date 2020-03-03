@@ -90,7 +90,6 @@ class App extends React.Component{
     }); 
   }
 
-
   handleRemovePlayer = (id) => {
       this.setState( previousState => {
         return {
@@ -102,32 +101,30 @@ class App extends React.Component{
   
   render () {
     return (
-      <Provider>
+      <Provider value={{
+          players: this.state.players,
+          actions: { 
+            changeScore1: this.handleScoreChange,
+            removePlayer1: this.handleRemovePlayer,
+            addPlayer1: this.handleAddPlayer
+          }
+      }}>
            <div className="scoreboard">
                 <Header 
-                title="LadderBoard" 
-                players1={this.state.players}
+                      players1={this.state.players}
                 />
-
-              
                 {this.state.players.map( (user, index) => 
-              
-                
-                <Player 
-                name1={user.name3}
-                score2={user.score5}
-                key={user.id.toString()}
-                changeScore1={this.handleScoreChange}
-                index={index}
-                removePlayer={this.handleRemovePlayer}
-                id={user.id}
-                isHighScore={this.findHighScore() === user.score5}
-                />
-              
+                  <Player 
+                      name1={user.name3}
+                      score2={user.score5}
+                      key={user.id.toString()}
+                      index={index}
+                      id={user.id}
+                      isHighScore={this.findHighScore() === user.score5}
+                  />
                 )}
-              
-                <AddPlayerForm addPlayer={this.handleAddPlayer}/>
-          </div>
+                <AddPlayerForm />
+            </div>
       </Provider>
   
   );
